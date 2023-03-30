@@ -1,0 +1,16 @@
+tacacs server TACACS01
+address ipv4 10.224.100.205
+key 0 T4c4c5k3Y!
+tacacs server TACACS02
+address ipv4 10.224.100.206
+key 0 T4c4c5k3Y!
+aaa authentication login VTY_AAA group tacacs+ local
+aaa authentication enable default group tacacs+ enable
+aaa authorization exec VTY_AAA group tacacs+ local
+aaa authorization commands 0 VTY_AAA group tacacs+ local
+aaa authorization commands 1 VTY_AAA group tacacs+ local
+aaa authorization commands 15 VTY_AAA group tacacs+ local
+aaa authorization config-commands
+aaa accounting exec VTY_AAA start-stop group tacacs+
+aaa accounting commands 1 VTY_AAA start-stop group tacacs+
+aaa accounting commands 15 VTY_AAA start-stop group tacacs+

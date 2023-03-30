@@ -1,0 +1,16 @@
+To remove italik user from all switches
+
+Single switch
+sshcmd config -h 10.224.21.20 -f removeuser.cli
+
+Multiple switches
+sshcmd config -l vl-access.ip -f removeuser.cli
+sshcmd config -l lh-access.ip -f removeuser.cli
+sshcmd config -l lh-core.ip -f removeuser.cli
+sshcmd config -l all-demarc.ip -f removeuser.cli
+
+Save Config
+sshcmd exec -l vl-access.ip -c "wr mem"
+sshcmd exec -l lh-access.ip -c "wr mem"
+sshcmd exec -l lh-core.ip -c "wr mem"
+sshcmd exec -l all-demarc.ip -c "wr mem"

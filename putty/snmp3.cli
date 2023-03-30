@@ -1,0 +1,2 @@
+snmp-server group default v3 priv
+snmp-server user SNMP-USER default v3 auth sha FGHSNMP2019AX! priv aes 128 FGHSNMP2019PX!

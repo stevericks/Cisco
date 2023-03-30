@@ -1,0 +1,6 @@
+line vty 0 15
+authorization exec VTY_AAA
+login authentication VTY_AAA
+authorization commands 0 VTY_AAA
+authorization commands 1 VTY_AAA
+authorization commands 15 VTY_AAA

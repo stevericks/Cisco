@@ -1,0 +1,2 @@
+conf t
+logging host 10.224.14.26

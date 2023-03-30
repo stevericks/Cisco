@@ -1,0 +1,80 @@
+Switches
+dnaadmin
+8QfD94pcrwcR3gHk7kgX
+
+snmp read Rd4S3AqWZuem
+snmp write WrkB74HHj2Mz
+
+
+
+ISE
+10.224.100.205
+Web GUI and ssh
+admin
+C6cr4PgxWmVFWyWd
+
+DNAC ssh
+10.224.21.221 port 2222
+maglev
+C1sc0DNAC2019!
+
+
+
+
+
+
+description IT Switch
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 1021,3130,3131,3140,3141,3254
+ switchport mode trunk
+ switchport nonegotiate
+
+
+
+
+
+
+
+
+Conf t
+vlan 3254
+name VLGuest_Cityfibre
+
+conf t
+int po1
+switchport trunk allowed vlan add 3254
+
+
+then apply to trunk to AP
+switchport trunk allowed vlan add 3254
+switchport trunk native vlan 3254
+
+This is done with the following command on the core for each VLAN to make the core the root bridge by default
+
+spanning-tree vlan vlan-id root primary
+
+ description IT Switch 
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 1021,3130,3131,3140,3141,3254
+ switchport mode trunk
+ switchport nonegotiate
+ 
+
+
+"C:\Program Files\PuTTY\putty.exe" 10.224.21.254 -l %ID% -pw %PW%
+"C:\Program Files\PuTTY\putty.exe" 10.224.21.254 -l snl007 -pw %PW%
+
+interface Vlan32
+ description LEGACY32 SVI
+ ip address 172.16.32.80 255.255.252.0
+
+	
+ ip address 172.16.32.1 255.255.252.0
+ ip helper-address 10.224.100.103
+ ip helper-address 10.224.100.98
+ ip helper-address 10.224.100.99
+
+test https to dnac
+copy https://10.224.21.220//core/img/cisco-bridge.png flash:
+
+

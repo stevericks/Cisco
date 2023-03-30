@@ -1,0 +1,50 @@
+REM *** TEST Connection and  No TACACS Config Exists ***
+sshcmd find tacacs -h 10.224.21.11 --tcpping  --nomatch
+
+
+
+REM *** Apply AAA Config ***
+sshcmd config  -l lh-switches.ip -f tacacs-aaa.cli --tcpping
+
+REM *** Test Tacacs using my user id
+sshcmd exec -h 10.224.21.11 -f tacacs-test.cli --id %TID% --macro "$TPW=%TPW%"
+
+REM *** Apply VTY Config ***
+sshcmd config  -l lh-switches.ip -f tacacs-vty.cli
+
+REM *** Save ***
+sshcmd exec -l lh-switches.ip -c "wr mem"
+sshcmd exec -h 10.224.21.22 -c "wr mem"
+
+
+
+
+REM *** Multiple Hosts ****
+sshcmd -l hostlist.ip
+
+REM *** Save Running Config to file ***
+sshcmd exec -l vl-access.ip -c "sh run" -s host
+sshcmd exec -h vl 10.225.60.1 -c "sh run" -s host
+
+REM ***Apply archive config ****
+sshcmd config  -h 10.224.21.11 -f ArchiveConfig.cli
+sshcmd config  -l lh-switches.ip -f ArchiveConfig.cli
+
+
+
+
+example
+
+sshcmd config -h 10.224.21.254 -f tacacs-aaa.cli --tcpping
+sshcmd exec -h 10.224.21.254 -f tacacs-test.cli --id %TID% --macro "$TPW=%TPW%"
+sshcmd config -h 10.224.21.254 -f tacacs-vty.cli
+sshcmd exec -h 10.224.21.254 -c "wr mem"
+
+
+To remove italik user from all switches
+
+sshcmd config -h 10.224.21.20 -f removeuser.cli
+sshcmd config -l vl-access.ip -f removeuser.cli
+sshcmd config -l lh-access.ip -f removeuser.cli
+sshcmd config -l lh-core.ip -f removeuser.cli
+sshcmd config -l lh-switches.ip -f removeuser.cli

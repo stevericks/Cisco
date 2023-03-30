@@ -1,0 +1,7 @@
+archive
+log config
+logging enable
+hidekeys
+exit
+path ftp://172.16.34.3/$h-
+write-memory

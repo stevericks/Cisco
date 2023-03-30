@@ -1,0 +1,13 @@
+conf t
+interface range macro ACCESS-PORTS
+no switchport port-security
+exit
+
+
+
+
+
+
+ no switchport port-security maximum 2
+ no switchport port-security mac-address sticky
+ no switchport port-security

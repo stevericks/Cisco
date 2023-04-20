@@ -1,0 +1,24 @@
+show ver
+show clock
+show ntp status
+show run
+show log
+show int status
+show span
+show cdp neigh
+show cdp neigh detail
+show ip route
+show inventory
+show vlan brief
+show vtp status
+show power inline
+show ip int brief
+show arp
+show mac add
+show ip access-list
+sh module
+show port-security
+show ip ospf interface brief
+show ip ospf neighbour
+show ip ospf database
+dir
